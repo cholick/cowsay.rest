@@ -1,0 +1,160 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"/>
+    <style>
+        .inline-json {
+            white-space: nowrap;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h2>cowsay.rest</h2>
+
+    <div class="row">
+        <div class="two column"></div>
+        <pre class="ten column">
+ _______
+< Hello >
+ -------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+        </pre>
+    </div>
+
+    <h4>Introduction</h4>
+
+    <div class="row">
+        <div class="twelve column">
+            <p>
+                cowsay.rest provides a contemporary, RESTful solution to having ASCII art cows to say things.
+            </p>
+
+        </div>
+    </div>
+
+    <h4>API</h4>
+
+    <table class="u-full-width">
+        <thead>
+        <tr>
+            <th>Path</th>
+            <th>Verb</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>/api/cows</td>
+            <td>GET</td>
+            <td>
+                <p>List the available cows</p>
+            </td>
+            <td>
+                <button class="button-primary" onclick="$('#list').fadeIn(200)">Try it</button>
+            </td>
+        </tr>
+
+        <tr id="list" style="display: none">
+            <td colspan="4">
+                <button class="button-primary" onclick="listJson()">application/json</button>
+                <button class="button-primary" onclick="listText()">text/plain</button>
+
+                <h6>Results:</h6>
+                <pre id="list-results">
+
+                </pre>
+            </td>
+        </tr>
+        <tr>
+            <td>/api/say/:cow/:eyes/:tongue</td>
+            <td>GET</td>
+            <td>
+                <p>Say "Moo" for the optional cow, eyes, and tongue</p>
+            </td>
+            <td>
+                <button class="button-primary">Try it</button>
+            </td>
+        </tr>
+        <tr>
+            <td>/api/say/:cow/:eyes/:tongue</td>
+            <td>POST</td>
+            <td>
+                <p>
+                    Say posted content for the optional cow, eyes, and tongue. Valid payloads are a string of
+                    content for content-type text/plain or json formatted as follows for application/json:
+                    <span class="inline-json">{ "say": "Moo" }</span>
+                </p>
+            </td>
+            <td>
+                <button class="button-primary">Try it</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h4>Errors</h4>
+    <table class="u-full-width">
+        <thead>
+        <tr>
+            <th>Code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>404</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>406</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>415</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>422</td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <h4>Footer</h4>
+
+    <div class="row">
+        <div class="twelve column">
+            <p>
+                Inspired by the ever useful <a href="http://shoutcloud.io/">shoutcloud.io</a>
+                and <a href="http://foaas.herokuapp.com/">foass</a>.
+            </p>
+
+            <p>
+                Created by
+                <a href="http://www.cholick.com">Matt Cholick</a>
+                (<a href="https://twitter.com/cholick">@cholick</a>)
+            </p>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="lib.js"></script>
+<script>
+    //todo: Browserify or require
+    lib(window);
+</script>
+
+</body>
+</html>

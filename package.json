@@ -9,8 +9,8 @@
     },
     "scripts": {
         "lint": "jshint *.js; jscs *.js",
-        "test": "mocha 'app/**/*.js'",
-        "test_watch": "mocha -w 'app/**/*.js'",
+        "test": "mocha 'app/**/*.js' 'public/**/*.js'",
+        "test_watch": "mocha -w 'app/**/*.js' 'public/**/*.js'",
         "start": "nodemon app.js"
     },
     "repository": {

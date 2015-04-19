@@ -8,8 +8,9 @@ app.use('/api',
     require('./app/routes/api-routes')
 );
 
-var port = process.env.PORT || 3000;
+app.use('/', express.static('public'));
 
+var port = process.env.PORT || 3000;
 app.listen(port, function () {
     console.log('Server started on [' + port + ']');
 });
