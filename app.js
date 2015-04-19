@@ -8,7 +8,8 @@ app.use('/api',
     require('./app/routes/api-routes')
 );
 
-var port = process.env.VCAPP_APP_PORT || 3000;
+var port = process.env.PORT || 3000;
+
 app.listen(port, function () {
-    console.log('Sarver started on [' + port + ']');
+    console.log('Server started on [' + port + ']');
 });
