@@ -36,7 +36,6 @@
             <p>
                 cowsay.rest provides a contemporary, RESTful solution to having ASCII art cows to say things.
             </p>
-
         </div>
     </div>
 
@@ -98,14 +97,14 @@
         <tr id="try-get" style="display: none">
             <td colspan="2" valign="top">
                 <form>
-                    <label for="get-cow">:cow</label>
-                    <input id="get-cow" type="text" placeholder="cow"/>
+                    <label for="cow-get">:cow</label>
+                    <input id="cow-get" type="text" placeholder="cow"/>
 
-                    <label for="get-eyes">:eyes</label>
-                    <input id="get-eyes" type="text" placeholder="oo"/>
+                    <label for="eyes-get">:eyes</label>
+                    <input id="eyes-get" type="text" placeholder="oo"/>
 
-                    <label for="get-tongue">:tongue</label>
-                    <input id="get-tongue" type="text" placeholder=""/>
+                    <label for="tongue-get">:tongue</label>
+                    <input id="tongue-get" type="text" placeholder=""/>
 
                     <div>
                         <button id="text-do-get" class="button-primary" onclick="getText(); return false;">text</button>
@@ -130,9 +129,41 @@
                 </p>
             </td>
             <td>
-                <button class="button-primary">Try it</button>
+                <button id="try-button-post" class="button-primary" onclick="toggleTry('post')">
+                    Try it
+                </button>
+                <button id="cancel-button-post" class="button" onclick="toggleCancel('post')" style="display: none">
+                    Cancel
+                </button>
             </td>
         </tr>
+        <tr id="try-post" style="display: none">
+            <td colspan="2" valign="top">
+                <form>
+                    <label for="cow-post">:cow</label>
+                    <input id="cow-post" type="text" placeholder="cow"/>
+
+                    <label for="eyes-post">:eyes</label>
+                    <input id="eyes-post" type="text" placeholder="oo"/>
+
+                    <label for="tongue-post">:tongue</label>
+                    <input id="tongue-post" type="text" placeholder=""/>
+
+                    <label for="say-post">body</label>
+                    <input id="say-post" type="text" placeholder="Moo"/>
+
+                    <div>
+                        <button id="text-do-post" class="button-primary" onclick="postText(); return false;">text</button>
+                        <button id="json-do-post" class="button-primary" onclick="postJson(); return false;">json</button>
+                    </div>
+                </form>
+            </td>
+            <td colspan="2">
+                <h6 id="results-header-post" style="display: none;">Response:</h6>
+                <pre id="results-post"></pre>
+            </td>
+        </tr>
+
         </tbody>
     </table>
 
@@ -146,20 +177,29 @@
         </thead>
         <tbody>
         <tr>
-            <td>404</td>
-            <td></td>
+            <td>404: Not found</td>
+            <td>The :cow may be invalid.</td>
         </tr>
         <tr>
-            <td>406</td>
-            <td></td>
+            <td>406: Not Acceptable</td>
+            <td>
+                Accept header was invalid. Valid values are
+                <strong>text/plain</strong> and <strong>application/json</strong>
+            </td>
         </tr>
         <tr>
-            <td>415</td>
-            <td></td>
+            <td>415: Unsupported Media Type</td>
+            <td>Content-type was invalid.
+                Valid values are
+                <strong>text/plain</strong> and <strong>application/json</strong>
+            </td>
         </tr>
         <tr>
-            <td>422</td>
-            <td></td>
+            <td>422: Unprocessable Entity</td>
+            <td>
+                The JSON was invalid. Body should be in the form of
+                <span class="inline-json">{ "say": "Moo" }</span>
+            </td>
         </tr>
         </tbody>
     </table>
@@ -169,6 +209,10 @@
 
     <div class="row">
         <div class="twelve column">
+            <p>
+                Thanks to Tony Monroe for the original cowsay.
+            </p>
+
             <p>
                 Inspired by the ever useful <a href="http://shoutcloud.io/">shoutcloud.io</a>
                 and <a href="http://foaas.herokuapp.com/">foass</a>.
@@ -181,13 +225,11 @@
             </p>
         </div>
     </div>
-
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="lib.js"></script>
 <script>
-    //todo: Browserify or require
     lib(window);
 </script>
 

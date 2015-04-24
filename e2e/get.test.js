@@ -21,9 +21,9 @@ describe('GET /api/say', function () {
     });
 
     it('fills in values', function () {
-        browser.fill('#get-cow', 'cow');
-        browser.fill('#get-eyes', 'xx');
-        browser.fill('#get-tongue', ' U');
+        browser.fill('#cow-get', 'cow');
+        browser.fill('#eyes-get', 'xx');
+        browser.fill('#tongue-get', ' U');
     });
 
     it('submits text', function () {
