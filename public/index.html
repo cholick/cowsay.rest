@@ -59,21 +59,27 @@
                 <p>List the available cows</p>
             </td>
             <td>
-                <button class="button-primary" onclick="$('#list').fadeIn(200)">Try it</button>
+                <button id="try-button-list" class="button-primary" onclick="toggleTry('list')">
+                    Try it
+                </button>
+                <button id="cancel-button-list" class="button" onclick="toggleCancel('list')" style="display: none">
+                    Cancel
+                </button>
+            </td>
+        </tr>
+        <tr id="try-list" style="display: none">
+            <td colspan="2" valign="top">
+                <form>
+                    <button class="button-primary" onclick="listText(); return false;">text</button>
+                    <button class="button-primary" onclick="listJson(); return false;">json</button>
+                </form>
+            </td>
+            <td colspan="2">
+                <h6 id="results-header-list" style="display: none;">Response:</h6>
+                <pre id="results-list"></pre>
             </td>
         </tr>
 
-        <tr id="list" style="display: none">
-            <td colspan="4">
-                <button class="button-primary" onclick="listJson()">application/json</button>
-                <button class="button-primary" onclick="listText()">text/plain</button>
-
-                <h6>Results:</h6>
-                <pre id="list-results">
-
-                </pre>
-            </td>
-        </tr>
         <tr>
             <td>/api/say/:cow/:eyes/:tongue</td>
             <td>GET</td>
@@ -81,9 +87,38 @@
                 <p>Say "Moo" for the optional cow, eyes, and tongue</p>
             </td>
             <td>
-                <button class="button-primary">Try it</button>
+                <button id="try-button-get" class="button-primary" onclick="toggleTry('get')">
+                    Try it
+                </button>
+                <button id="cancel-button-get" class="button" onclick="toggleCancel('get')" style="display: none">
+                    Cancel
+                </button>
             </td>
         </tr>
+        <tr id="try-get" style="display: none">
+            <td colspan="2" valign="top">
+                <form>
+                    <label for="get-cow">:cow</label>
+                    <input id="get-cow" type="text" placeholder="cow"/>
+
+                    <label for="get-eyes">:eyes</label>
+                    <input id="get-eyes" type="text" placeholder="oo"/>
+
+                    <label for="get-tongue">:tongue</label>
+                    <input id="get-tongue" type="text" placeholder=""/>
+
+                    <div>
+                        <button class="button-primary" onclick="getText(); return false;">text</button>
+                        <button class="button-primary" onclick="getJson(); return false;">json</button>
+                    </div>
+                </form>
+            </td>
+            <td colspan="2">
+                <h6 id="results-header-get" style="display: none;">Response:</h6>
+                <pre id="results-get"></pre>
+            </td>
+        </tr>
+
         <tr>
             <td>/api/say/:cow/:eyes/:tongue</td>
             <td>POST</td>

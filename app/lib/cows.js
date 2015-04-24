@@ -36,7 +36,6 @@ var cows = [
     'surgery',
     'turkey',
     'turtle',
-    'turtle',
     'vader-koala',
     'vader',
     'www'

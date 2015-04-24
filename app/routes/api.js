@@ -14,8 +14,8 @@ function list(req, res) {
 
 function say(req, res) {
     var say;
-    if(sentJson(req)) {
-        if(sentValidJson(req)) {
+    if (sentJson(req)) {
+        if (sentValidJson(req)) {
             say = req.body.say;
         } else {
             res.status(422).end();
@@ -34,6 +34,7 @@ function sayDefault(req, res) {
 
 function doSay(req, res, message) {
     var cow = req.params.cow || 'default';
+    cow = cow.toLocaleLowerCase();
     if (cow == 'cow') {
         cow = 'default';
     }
