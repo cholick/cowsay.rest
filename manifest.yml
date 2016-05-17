@@ -3,5 +3,5 @@ applications:
 - name: cowsay
   buildpack: https://github.com/cloudfoundry/buildpack-nodejs.git
   command: node app.js
-  memory: 256M
-  instances: 2
+  memory: 64M
+  instances: 1
